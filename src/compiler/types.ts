@@ -3862,7 +3862,8 @@ namespace ts {
         TS = 3,
         TSX = 4,
         External = 5,
-        JSON = 6
+        JSON = 6,
+        Elan = 7,
     }
 
     export const enum ScriptTarget {

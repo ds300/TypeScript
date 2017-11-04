@@ -1277,6 +1277,7 @@ namespace ts {
 
                 // By default, only type-check .ts, .tsx, and 'External' files (external files are added by plugins)
                 const includeBindAndCheckDiagnostics = sourceFile.scriptKind === ScriptKind.TS || sourceFile.scriptKind === ScriptKind.TSX ||
+                    sourceFile.scriptKind === ScriptKind.Elan ||
                     sourceFile.scriptKind === ScriptKind.External || isCheckJsEnabledForFile(sourceFile, options);
                 const bindDiagnostics = includeBindAndCheckDiagnostics ? sourceFile.bindDiagnostics : emptyArray;
                 const checkDiagnostics = includeBindAndCheckDiagnostics ? typeChecker.getDiagnostics(sourceFile, cancellationToken) : emptyArray;

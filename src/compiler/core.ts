@@ -2274,6 +2274,8 @@ namespace ts {
                 return ScriptKind.TS;
             case Extension.Tsx:
                 return ScriptKind.TSX;
+            case Extension.Elan:
+                return ScriptKind.Elan;
             case Extension.Json:
                 return ScriptKind.JSON;
             default:
