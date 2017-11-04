@@ -4167,6 +4167,7 @@ namespace ts {
     }
 
     export const enum Extension {
+        Elan = ".elan",
         Ts = ".ts",
         Tsx = ".tsx",
         Dts = ".d.ts",
