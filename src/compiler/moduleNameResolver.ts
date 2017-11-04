@@ -857,7 +857,7 @@ namespace ts {
             case Extensions.DtsOnly:
                 return tryExtension(Extension.Dts);
             case Extensions.TypeScript:
-                return tryExtension(Extension.Ts) || tryExtension(Extension.Tsx) || tryExtension(Extension.Dts);
+                return tryExtension(Extension.Ts) || tryExtension(Extension.Tsx) || tryExtension(Extension.Dts) || tryExtension(Extension.Elan);
             case Extensions.JavaScript:
                 return tryExtension(Extension.Js) || tryExtension(Extension.Jsx);
         }
@@ -973,7 +973,7 @@ namespace ts {
             case Extensions.JavaScript:
                 return extension === Extension.Js || extension === Extension.Jsx;
             case Extensions.TypeScript:
-                return extension === Extension.Ts || extension === Extension.Tsx || extension === Extension.Dts;
+                return extension === Extension.Ts || extension === Extension.Tsx || extension === Extension.Dts || extension === Extension.Elan;
             case Extensions.DtsOnly:
                 return extension === Extension.Dts;
         }
