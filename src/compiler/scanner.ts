@@ -62,6 +62,7 @@ namespace ts {
     }
 
     const textToToken = createMapFromTemplate({
+        "state": SyntaxKind.ElanStateKeyword,
         "abstract": SyntaxKind.AbstractKeyword,
         "any": SyntaxKind.AnyKeyword,
         "as": SyntaxKind.AsKeyword,

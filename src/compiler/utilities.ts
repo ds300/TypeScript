@@ -5519,6 +5519,7 @@ namespace ts {
         return kind === SyntaxKind.ArrowFunction
             || kind === SyntaxKind.BindingElement
             || kind === SyntaxKind.ClassDeclaration
+            || kind === SyntaxKind.ElanStateDeclaration
             || kind === SyntaxKind.ClassExpression
             || kind === SyntaxKind.Constructor
             || kind === SyntaxKind.EnumDeclaration

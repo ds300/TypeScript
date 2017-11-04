@@ -1329,6 +1329,7 @@ namespace ts {
             nextToken();
             return token() === SyntaxKind.ClassKeyword || token() === SyntaxKind.FunctionKeyword ||
                 token() === SyntaxKind.InterfaceKeyword ||
+                token() === SyntaxKind.ElanStateKeyword ||
                 (token() === SyntaxKind.AbstractKeyword && lookAhead(nextTokenIsClassKeywordOnSameLine)) ||
                 (token() === SyntaxKind.AsyncKeyword && lookAhead(nextTokenIsFunctionKeywordOnSameLine));
         }
@@ -4957,6 +4958,7 @@ namespace ts {
                     // could be legal, it would add complexity for very little gain.
                     case SyntaxKind.InterfaceKeyword:
                     case SyntaxKind.TypeKeyword:
+                    case SyntaxKind.ElanStateKeyword:
                         return nextTokenIsIdentifierOnSameLine();
                     case SyntaxKind.ModuleKeyword:
                     case SyntaxKind.NamespaceKeyword:
@@ -5092,6 +5094,11 @@ namespace ts {
                     return parseFunctionDeclaration(scanner.getStartPos(), /*decorators*/ undefined, /*modifiers*/ undefined);
                 case SyntaxKind.ClassKeyword:
                     return parseClassDeclaration(scanner.getStartPos(), /*decorators*/ undefined, /*modifiers*/ undefined);
+                case SyntaxKind.ElanStateKeyword:
+                    if (sourceFile.scriptKind === ScriptKind.Elan) {
+                        return parseStateDeclaration(scanner.getStartPos());
+                    }
+                    break;
                 case SyntaxKind.IfKeyword:
                     return parseIfStatement();
                 case SyntaxKind.DoKeyword:
@@ -5657,6 +5664,15 @@ namespace ts {
             }
 
             return addJSDocComment(finishNode(node));
+        }
+
+        function parseStateDeclaration(fullStart: number): ElanStateDeclaration {
+            const node = <ElanStateDeclaration>createNode(SyntaxKind.ElanStateDeclaration, fullStart);
+            parseExpected(SyntaxKind.ElanStateKeyword);
+            node.name = parseIdentifier()
+            parseExpected(SyntaxKind.OpenBraceToken)
+            parseExpected(SyntaxKind.CloseBraceToken)
+            return finishNode(node)
         }
 
         function parseNameOfClassDeclarationOrExpression(): Identifier | undefined {

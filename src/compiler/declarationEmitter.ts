@@ -713,6 +713,8 @@ namespace ts {
                     return writeInterfaceDeclaration(<InterfaceDeclaration>node);
                 case SyntaxKind.ClassDeclaration:
                     return writeClassDeclaration(<ClassDeclaration>node);
+                case SyntaxKind.ElanStateDeclaration:
+                    return writeElanStateDeclaration(<ElanStateDeclaration>node);
                 case SyntaxKind.TypeAliasDeclaration:
                     return writeTypeAliasDeclaration(<TypeAliasDeclaration>node);
                 case SyntaxKind.EnumDeclaration:
@@ -1143,6 +1145,12 @@ namespace ts {
                     };
                 }
             }
+        }
+        function writeElanStateDeclaration(node: ElanStateDeclaration) {
+             write("namespace ")
+             writeTextOfNode(currentText, node.name)
+             write(" {}")
+             writeLine();
         }
 
         function writeClassDeclaration(node: ClassDeclaration) {

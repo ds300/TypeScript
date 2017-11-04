@@ -176,6 +176,7 @@ namespace ts {
         StaticKeyword,
         YieldKeyword,
         // Contextual keywords
+        ElanStateKeyword,
         AbstractKeyword,
         AsKeyword,
         AnyKeyword,
@@ -301,6 +302,7 @@ namespace ts {
         VariableDeclarationList,
         FunctionDeclaration,
         ClassDeclaration,
+        ElanStateDeclaration,
         InterfaceDeclaration,
         TypeAliasDeclaration,
         EnumDeclaration,
@@ -1920,6 +1922,11 @@ namespace ts {
     export interface ClassElement extends NamedDeclaration {
         _classElementBrand: any;
         name?: PropertyName;
+    }
+
+    export interface ElanStateDeclaration extends DeclarationStatement, JSDocContainer {
+        kind: SyntaxKind.ElanStateDeclaration
+        name: Identifier
     }
 
     export interface TypeElement extends NamedDeclaration {
