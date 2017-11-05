@@ -4276,6 +4276,8 @@ namespace ts {
         ContainsHoistedDeclarationOrCompletion = 1 << 25,
         ContainsDynamicImport = 1 << 26,
 
+        ContainsElan = 1 << 28,
+
         // Please leave this as 1 << 29.
         // It is the maximum bit we can set before we outgrow the size of a v8 small integer (SMI) on an x86 system.
         // It is a good reminder of how much room we have left

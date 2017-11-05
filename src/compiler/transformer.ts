@@ -8,6 +8,7 @@
 /// <reference path="transformers/es2015.ts" />
 /// <reference path="transformers/generators.ts" />
 /// <reference path="transformers/es5.ts" />
+/// <reference path="transformers/elan.ts" />
 /// <reference path="transformers/module/module.ts" />
 /// <reference path="transformers/module/system.ts" />
 /// <reference path="transformers/module/es2015.ts" />
@@ -47,6 +48,8 @@ namespace ts {
         addRange(transformers, customTransformers && customTransformers.before);
 
         transformers.push(transformTypeScript);
+
+        transformers.push(transformElan)
 
         if (jsx === JsxEmit.React) {
             transformers.push(transformJsx);
